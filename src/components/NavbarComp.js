@@ -25,8 +25,7 @@ export default class NavbarComp extends Component{
           </Nav>
             </Container>
   </Navbar>
-    
-       <Switch>
+     <Switch>
           <Route path="/cart">
             <Cart />
           </Route>

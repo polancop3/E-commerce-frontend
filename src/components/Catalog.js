@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
+import Card from "./Card";
 export default class Catalog extends Component {
     render() {
         return (
             <div>
-                <h1>Catalog</h1>
-                <p>This is catalog.</p>
+                <Card/>
+                <Card/>
             </div>
         )
     }
