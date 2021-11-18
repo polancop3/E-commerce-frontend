@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-
+import Cards from './Cards';
+import "./homeStyles.css";
 export default class Home extends Component {
     render() {
         return (
-            <div>
-                <h1>Home</h1>
-                <p>This is home.</p>
-            </div>
+        <div className="items-container">
+            <Cards/>
+            <Cards/>
+            <Cards/>
+            <Cards/>
+            <Cards/>
+            <Cards/>
+        </div>
         )
     }
 }

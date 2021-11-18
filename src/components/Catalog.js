@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import Card from "./Card";
+import Cards from "./Cards";
 export default class Catalog extends Component {
     render() {
         return (
             <div>
-                <Card/>
-                <Card/>
+                browse
             </div>
         )
     }
