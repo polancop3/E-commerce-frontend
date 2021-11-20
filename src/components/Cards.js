@@ -1,13 +1,30 @@
 import React , {Component} from 'react';
 import {Card, Button} from "react-bootstrap";
+import Cartitas from "./example";
 
 export default class Cards extends Component{
+  constructor(props){
+    super(props);
+    this.state = {}
+  }
+
+  // componentDidMount(){
+  // let products = fetch('https://fakestoreapi.com/products')
+  //    .then(res => res.json())
+  //    .then(json => json.map((item) => {
+  //      return <h2></h2>
+  //     //  console.log(item.title)
+  //    }))
+  // }
+
+
+
   render(){
     return(
 <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="holder.js/100px180" />
   <Card.Body>
-    <Card.Title>Card Title</Card.Title>
+    <Card.Title><Cartitas/></Card.Title>
     <Card.Text>
       Some quick example text to build on the card title and make up the bulk of
       the card's content.

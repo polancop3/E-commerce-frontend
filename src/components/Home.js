@@ -6,11 +6,6 @@ export default class Home extends Component {
         return (
         <div className="items-container">
             <Cards/>
-            <Cards/>
-            <Cards/>
-            <Cards/>
-            <Cards/>
-            <Cards/>
         </div>
         )
     }
