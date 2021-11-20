@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { getMovies } from './getmovies';
+
 //bring data to fron end
 //map through the data
 
@@ -28,7 +28,7 @@ class Cartitas extends Component {
     render(){
         return (
             <div className="Cartitas">
-                {this.state.movies.map((movie,index) => <p key={index}>{movie.title}</p>)}
+                {this.state.movies.map((movie,index) =><p key={index}>{movie[0].title}</p>)}
             </div>
         )
 
