@@ -1,15 +1,15 @@
 import axios from 'axios';
-
+const url = "http://localhost:8080/demo/";
 export async function getProducts() {
-   return axios.get('https://fakestoreapi.com/products?limit=6')
+   return axios.get(url)
    .then(response => response.data)
    .catch(error => {
       console.error(error)
       throw error
    })
 }
-
+export let products = [];
 export async function addToCart(item) {
-   // TODO - send post request to api when api is implemented
-   console.log(item) 
+   products.push(item);
+   console.log(products)
 }

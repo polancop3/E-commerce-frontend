@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import { Button, Col, Row } from "react-bootstrap";
 import { getProducts, addToCart } from '../../services/products';
-
+// Card template
 function ProductCard(props) {
   const imgStyle = {
     maxHeight: "200px", 
@@ -25,14 +25,14 @@ function ProductCard(props) {
     <div style={containerStyle}>
       <Row>
         <Col style={imgContainerStyle} md={4}>
-          <img style={imgStyle} src={props.item.image}/>
+          <img style={imgStyle} src={props.item.img}/>
         </Col>
 
         <Col>
           <Row><h4>{props.item.title}</h4></Row>
           <Row><p>{props.item.description}</p></Row>
-          <Row><p>{props.item.category}</p></Row>
-          <Row><h6>{props.item.price}</h6></Row>
+          {/* <Row><p>{props.item.category}</p></Row> */}
+          <Row><h6>${props.item.price}</h6></Row>
           <Button onClick={() => addToCart(props.item)}>Add to cart</Button>
         </Col>
       </Row>
@@ -46,11 +46,11 @@ export default class Home extends Component {
     super(props);
     this.state = {products: []}
   }
-
+  // Set cart items to state
   componentDidMount() {
     getProducts().then(products => this.setState({ products }))
   }
-
+  // Pass products items to product card components as props
   render() {
     return (
       <Col>
