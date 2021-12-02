@@ -4,7 +4,7 @@ export default class Catalog extends Component {
   render() {
     return (
       <div>
-        browse
+       
       </div>
     )
   }

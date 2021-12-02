@@ -8,8 +8,16 @@ export async function getProducts() {
       throw error
    })
 }
+
 export let products = [];
+
 export async function addToCart(item) {
    products.push(item);
    console.log(products)
+}
+
+export function removeFromCart(id) {
+   const items = products.filter((item) => item.id !== id);
+   products = items
+   console.log(id)
 }
