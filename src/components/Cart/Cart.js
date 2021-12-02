@@ -9,9 +9,7 @@ export default class Cart extends Component {
 
     removeFromCart(id) {
         const items = products.splice(id,1);
-        console.log(items)
         this.setState({items})
-        console.log(id)
      }
 
     render() {
