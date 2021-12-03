@@ -6,13 +6,18 @@ export default class Cart extends Component {
         super(props)
         this.state = {cart: cartProducts }
     }
-
     removeFromCart(id) {
         const items = cartProducts.splice(id,1);
         this.setState({items})
      }
 
     render() {
+
+            const totalStyle = {
+            display: "flex",
+            justifyContent: "center"
+            }
+            
             const imgStyle = {
             maxHeight: "200px", 
             display: "block",
@@ -37,7 +42,8 @@ export default class Cart extends Component {
               marginLeft: "300px",
               marginRight: "300px"
           }
-
+          let total = 0;
+          this.state.cart.map((item, index) => total += item.price)
         return ( 
             <div style={containerStyle}>
                 {this.state.cart.map((item, index) =>
@@ -54,7 +60,7 @@ export default class Cart extends Component {
               )}
               
                 <Row style={checkOut}>
-                  Total:...
+                   <h6 style={totalStyle}>${total.toFixed(2)}</h6>
                   {/* {TODO post user order to database} */}
                     <Button >Checkout</Button>
                 </Row>

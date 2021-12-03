@@ -6,6 +6,7 @@ import Home from '../Home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from "react-bootstrap";
 import Register from "../Register.js/Register";
+import Login from "../Login/Login";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Container>
         <Switch>
           <Route path="/cart"><Cart /></Route>
+          <Route path="/login"><Login /></Route>
           <Route path="/register"><Register /></Route>
           <Route path="/"><Home /></Route>
         </Switch>
