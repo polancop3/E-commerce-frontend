@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import { Button, Col, Row } from "react-bootstrap";
-import { getProducts, addToCart } from '../../services/products';
+import { getProducts, handleAddToCart } from '../../services/products';
 // Card template
 function ProductCard(props) {
   const imgStyle = {
@@ -33,7 +33,7 @@ function ProductCard(props) {
           <Row><p>{props.item.description}</p></Row>
           {/* <Row><p>{props.item.category}</p></Row> */}
           <Row><h6>${props.item.price}</h6></Row>
-          <Button onClick={() => addToCart(props.item)}>Add to cart</Button>
+          <Button onClick={() => handleAddToCart(props.item)}>Add to cart</Button>
         </Col>
       </Row>
       <hr/>

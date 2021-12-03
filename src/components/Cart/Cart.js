@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { Button, Row, Col } from 'react-bootstrap'
-import { products } from '../../services/products'
+import { cartProducts } from '../../services/products'
 export default class Cart extends Component {
     constructor(props){
         super(props)
-        this.state = {cart: products }
+        this.state = {cart: cartProducts }
     }
 
     removeFromCart(id) {
-        const items = products.splice(id,1);
+        const items = cartProducts.splice(id,1);
         this.setState({items})
      }
 
     render() {
-
-        const imgStyle = {
+            const imgStyle = {
             maxHeight: "200px", 
             display: "block",
             marginLeft: "auto",

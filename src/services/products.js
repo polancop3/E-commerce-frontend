@@ -9,15 +9,9 @@ export async function getProducts() {
    })
 }
 
-export let products = [];
+export let cartProducts = [];
 
-export async function addToCart(item) {
-   products.push(item);
-   console.log(products)
-}
-
-export function removeFromCart(id) {
-   const items = products.filter((item) => item.id !== id);
-   products = items
-   console.log(id)
+export async function handleAddToCart(item) {
+   cartProducts.push(item);
+   console.log(cartProducts)
 }
