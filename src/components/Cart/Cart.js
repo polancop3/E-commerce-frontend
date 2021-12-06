@@ -36,7 +36,7 @@ export default class Cart extends Component {
             margin: "1%"
           }
           
-          const checkOut = {
+          const checkOutContainer = {
               display: "flex",
               justifyContent: "center",
               marginLeft: "300px",
@@ -59,8 +59,8 @@ export default class Cart extends Component {
                 </Row>
               )}
               
-                <Row style={checkOut}>
-                   <h6 style={totalStyle}>${total.toFixed(2)}</h6>
+                <Row style={checkOutContainer}>
+                   <h6 style={totalStyle}>Total: ${total.toFixed(2)}</h6>
                   {/* {TODO post user order to database} */}
                     <Button >Checkout</Button>
                 </Row>
