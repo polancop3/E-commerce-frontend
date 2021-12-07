@@ -44,6 +44,15 @@ export default class Cart extends Component {
           }
           let total = 0;
           this.state.cart.map((item, index) => total += item.price)
+
+          if(this.state.cart.length === 0){
+            return(
+                <header style={totalStyle}>
+                    <h2>Your cart is currently empty</h2>
+                </header>
+                
+            )
+          }
         return ( 
             <div style={containerStyle}>
                 {this.state.cart.map((item, index) =>
