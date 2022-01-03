@@ -1,8 +1,12 @@
-import React , { Component } from 'react';
+import React , { Component, useState } from 'react';
 import { Button, Col, Row } from "react-bootstrap";
-import { getProducts, handleAddToCart } from '../../services/products';
+import { getProducts, handleAddToCart, inventory, incrementQtyInCart, decrementQtyInCart } from '../../services/products';
+
 // Card template
 function ProductCard(props) {
+  const [quantity, setQuantity] = useState(1);
+
+
   const imgStyle = {
     maxHeight: "200px", 
     display: "block",
@@ -16,11 +20,11 @@ function ProductCard(props) {
     borderWidth: "1px",
     borderStyle: "solid"
   }
-
+  
   const containerStyle = {
     margin: "1%"
   }
-
+  
   return (
     <div style={containerStyle}>
       <Row>
@@ -33,7 +37,13 @@ function ProductCard(props) {
           <Row><p>{props.item.description}</p></Row>
           {/* <Row><p>{props.item.category}</p></Row> */}
           <Row><h6>${props.item.price}</h6></Row>
-          <Button onClick={() => handleAddToCart(props.item)}>Add to cart</Button>
+          <Button onClick={ () =>{ 
+            console.log(props.item.id,quantity)
+            incrementQtyInCart(props.item.id, parseInt(quantity))
+            } }>Add to cart</Button> X 
+          <input value={quantity} type="number" min={1} onChange={event =>{
+            setQuantity(event.target.value)
+          }}></input>
         </Col>
       </Row>
       <hr/>

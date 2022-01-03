@@ -1,14 +1,41 @@
 import React, { Component } from 'react';
 import { Button, Row, Col } from 'react-bootstrap'
-import { cartProducts } from '../../services/products'
+import { cart, inventory, removeFromCart } from '../../services/products'
 export default class Cart extends Component {
     constructor(props){
         super(props)
-        this.state = {cart: cartProducts }
+
+        const cartData = []
+
+        cart.forEach((quantity, id) => {
+            const product = inventory.get(id)
+            const totalPrice = (quantity * product.price)
+            const displayPrice = `$${totalPrice.toFixed(2)}`
+            
+            cartData.push({
+                id: id,
+                quantity: quantity,
+                details: product,
+                totalPrice: totalPrice,
+                displayPrice: displayPrice
+            })
+        })
+
+        this.state = {cart: cartData }
     }
-    removeFromCart(id) {
-        const items = cartProducts.splice(id,1);
-        this.setState({items})
+
+    removeItemFromCart(id) {
+        removeFromCart(id)
+        
+        const cart = this.state.cart
+
+        const index = cart.findIndex((item) => {return item.id === id})
+        cart.splice(index,1)
+        this.setState({cart})
+     }
+
+     handleCheckOut(){
+         alert("Thank you for your purchase!")
      }
 
     render() {
@@ -43,7 +70,12 @@ export default class Cart extends Component {
               marginRight: "300px"
           }
           let total = 0;
-          this.state.cart.map((item, index) => total += item.price)
+          
+          for(const item of this.state.cart) {
+            total += item.totalPrice
+          }
+
+          total = `$${total.toFixed(2)}`
 
           if(this.state.cart.length === 0){
             return(
@@ -58,20 +90,24 @@ export default class Cart extends Component {
                 {this.state.cart.map((item, index) =>
                 <Row key={index}>
                     <Col style={imgContainerStyle} md={4}>
-                        <img style={imgStyle} src={item.img}/>
+                        <img style={imgStyle} src={item.details.img}/>
                     </Col>
 
                     <Col>
-                        <p>${item.price}</p>
-                        <Button onClick={()=>this.removeFromCart(index)}>Remove</Button>
+                        <p>Quantity: {item.quantity}</p>
+                        <p>Unit price ${item.details.price}</p>
+                        <p>Total: {item.displayPrice}</p>
+                        <Button onClick={()=>this.removeItemFromCart(item.id)}>Remove</Button>
                     </Col>
                 </Row>
               )}
               
                 <Row style={checkOutContainer}>
-                   <h6 style={totalStyle}>Total: ${total.toFixed(2)}</h6>
-                  {/* {TODO post user order to database} */}
-                    <Button >Checkout</Button>
+                    <Col>
+                        <h6 style={totalStyle}>Total: {total}</h6>
+                        {/* {TODO post user order to database} */}
+                            <Button onClick={this.handleCheckOut}>Checkout</Button>
+                    </Col>
                 </Row>
             </div>
         )

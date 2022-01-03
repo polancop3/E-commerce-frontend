@@ -10,6 +10,7 @@ export default class Register extends Component {
       email: "", 
       password: ""
     }
+    
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
@@ -18,6 +19,7 @@ export default class Register extends Component {
     e.preventDefault();
     const { firstName, lastName, email, password } = this.state;
     const register = { firstName, lastName, email, password }
+
     try {
       const res = await axios.post("http://localhost:8080/customers", register)
       alert("you have successfuly registered");
